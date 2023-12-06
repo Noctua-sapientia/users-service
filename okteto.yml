@@ -1,0 +1,13 @@
+build:
+  users-service:
+    context: .
+
+deploy:
+  - helm upgrade --install users-service chart
+    --set users.image=${OKTETO_BUILD_USERS_SERVICE_IMAGE}
+
+dev:
+  contacts-service:
+    command: npm start
+    sync:
+      - .:/app

@@ -21,7 +21,7 @@ var customers = [
  */
 router.get('/', function(req, res, next) {
   res.send(customers);
-});s
+});
 
 /**
  * @swagger
