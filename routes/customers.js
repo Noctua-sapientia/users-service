@@ -1,10 +1,8 @@
 var express = require('express');
 const fakeservice = require('../services/fakeservice');
 var router = express.Router();
-
-var customers = [
-  { "id" : 1, "name" : "Pablo", "surnames" : "Santos Alises", "address" : "C/América, 4"}
-]
+var Customer = require('../models/customer');
+var debug = require('debug')('contacts-2:server');
 
 /**
  * @swagger
@@ -19,8 +17,14 @@ var customers = [
  *           application/json:
  *             example: [{ "id": 1, "name": "Pablo", "surnames": "Santos Alises", "address": "C/América, 4" }]
  */
-router.get('/', function(req, res, next) {
-  res.send(customers);
+router.get('/', async function(req, res, next) {
+  try{
+    const result = await Customer.find();
+    res.send(result.map((c) => c.cleanup()));
+  }catch(e){
+    debug("DB Problem", e);
+    res.sendStatus(500);
+  }
 });
 
 /**
@@ -38,10 +42,26 @@ router.get('/', function(req, res, next) {
  *       '201':
  *         description: Cliente añadido correctamente
  */
-router.post('/', function(req, res, next) {
-  var customer = req.body;
-  customers.push(customer);
-  res.sendStatus(201);
+router.post('/', async function(req, res, next) {
+  const {name, surnames, address} = req.body;
+  const customer = new Customer({
+    name,
+    surnames,
+    address
+  });
+
+  try{
+    await customer.save();
+    res.sendStatus(201);
+  }catch(e){
+    if(e.errors) {
+      debug("Validation problem when saving");
+      res.status(400).send({error: e.message});
+    }else{
+      debug("DB Problem", e);
+      res.sendStatus(500);
+    }
+  }
 });
 
 /**
@@ -58,7 +78,7 @@ router.post('/', function(req, res, next) {
  */
 router.put('/', function(req, res, next) {
   var newCustomer = req.body;
-  var actualCustomer = customers.find(s => {
+  var actualCustomer = Customer.find(s => {
     return s.id === newCustomer.id;
   })
 

@@ -1,10 +1,8 @@
 var express = require('express');
 const fakeservice = require('../services/fakeservice');
 var router = express.Router();
-
-var sellers = [
-  { "id" : 1, "name" : "amazon", "valoration" : 4.9, "orders": 10, "reviews": 11}
-]
+var Seller = require('../models/seller');
+var debug = require('debug')('contacts-2:server');
 
 /**
  * @swagger
@@ -77,19 +75,42 @@ var sellers = [
  *       '404':
  *         description: Vendedor no encontrado
  */
-router.get('/', function(req, res, next) {
-  res.send(sellers);
+router.get('/', async function(req, res, next) {
+  try{
+    const result = await Seller.find();
+    res.send(result.map((s) => s.cleanup()));  }catch(e){
+    debug("DB Problem", e);
+    res.sendStatus(500);
+  }
+
 });
 
-router.post('/', function(req, res, next) {
-  var seller = req.body;
-  sellers.push(seller);
-  res.sendStatus(201);
+router.post('/', async function(req, res, next) {
+  const {name, valoration, orders, reviews} = req.body;
+  const seller = new Seller({
+    name,
+    valoration,
+    orders,
+    reviews
+  });
+
+  try{
+    await seller.save();
+    res.sendStatus(201);
+  }catch(e){
+    if(e.errors) {
+      debug("Validation problem when saving");
+      res.status(400).send({error: e.message});
+    }else{
+      debug("DB Problem", e);
+      res.sendStatus(500);
+    }
+ }
 });
 
 router.put('/', function(req, res, next) {
   var newSeller = req.body;
-  var actualSeller = sellers.find(s => {
+  var actualSeller = Seller.find(s => {
     return s.id === newSeller.id;
   })
 

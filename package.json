@@ -2,8 +2,8 @@
   "name": "contacts-service",
   "version": "0.0.0",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/pabsanali/users-service.git"
+    "type": "git",
+    "url": "https://github.com/pabsanali/users-service.git"
   },
   "homepage": "https://github.com/pabsanali/users-service",
   "private": true,
@@ -15,6 +15,7 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "mongoose": "^8.0.2",
     "morgan": "~1.9.1",
     "url-join": "^4.0.1"
   }
