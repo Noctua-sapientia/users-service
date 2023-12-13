@@ -3,7 +3,7 @@ kind: service
 metadata: 
   name: users
   labels: 
-    {{ -include "users.labels" . | nindent 4 }}
+    {{- include "users.labels" . | nindent 4 }}
   annotations: 
     dev.okteto.com/auto-ingress: "true"
 spec:
