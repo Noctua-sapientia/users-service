@@ -140,18 +140,25 @@ router.get('/:id', async function(req, res, next) {
  *       '404':
  *         description: Cliente no encontrado
  */
-router.delete('/:id', function(req, res, next) {
+router.delete('/:id', async function(req, res, next) {
   var id = req.params.id;
   
-  var indexToRemove = customers.findIndex(function (customer) {
-    return customer.id === parseInt(id);
-  });
+  var id = req.params.id;
+  
+  try {
+    // Eliminar el vendedo por customerId
+    const result = await Customer.deleteOne({ "id": id });
 
-  if (indexToRemove !== -1) {
-    customers.splice(indexToRemove, 1);
-    res.sendStatus(200);
-  } else {
-    res.sendStatus(404);
+    // Si no se eliminó ningún documento, significa que no se encontró el comprador
+    if (result.deletedCount === 0) {
+      return res.status(404).send({ error: 'Customer not found' });
+    }
+
+    // Enviar una respuesta de éxito
+    res.status(200).send({ message: `Customer id=${id} deleted successfully` });
+  } catch (error) {
+    // Manejar errores inesperados
+    return res.status(500).send({ error: 'An error occurred while deleting the seller' });
   }
 });
 
