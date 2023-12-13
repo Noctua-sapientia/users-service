@@ -5,8 +5,6 @@ build:
 deploy:
   - helm upgrade --install users-service chart
     --set users.image=${OKTETO_BUILD_USERS_SERVICE_IMAGE}
-    --set usersMongoUrl=${USERS_DB_URL}
-
 dev:
   users-service:
     command: npm start
