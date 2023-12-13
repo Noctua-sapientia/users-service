@@ -22,7 +22,7 @@ app.use('/api/v1/customers', customersRouter);
 
 //Set up MongoDB configuration
 const mongoose = require('mongoose');
-const DB_URL = (process.env.DB_URL || 'mongodb://localhost/test')
+const DB_URL = (process.env.DB_URL || 'mongodb://localhost/test');
 console.log("Connecting to database %s", DB_URL);
 
 mongoose.connect(DB_URL);
