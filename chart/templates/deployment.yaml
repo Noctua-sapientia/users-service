@@ -29,8 +29,8 @@ spec:
                     key: users_db_url
             ports:
               - name: http
-              containerPort: 3000
-              protocol: TCP
+                containerPort: 3000
+                protocol: TCP
             readinessProbe: 
               initialDelaySeconds: 10
               periodSeconds: 1

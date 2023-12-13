@@ -126,7 +126,7 @@ router.put('/', function(req, res, next) {
 
 router.get('/:id', async function(req, res, next) {
   var id = req.params.id;
-  var result = sellers.find(s => {
+  var result = Seller.find(s => {
     return s.id === parseInt(id);
   });
 
@@ -137,18 +137,23 @@ router.get('/:id', async function(req, res, next) {
   }
 });
 
-router.delete('/:id', function(req, res, next) {
+router.delete('/:id', async function(req, res, next) {
   var id = req.params.id;
   
-  var indexToRemove = sellers.findIndex(function (seller) {
-    return seller.id === parseInt(id);
-  });
+  try {
+    // Eliminar el vendedo por sellerId
+    const result = await Seller.deleteOne({ "id": id });
 
-  if (indexToRemove !== -1) {
-    sellers.splice(indexToRemove, 1);
-    res.sendStatus(200);
-  } else {
-    res.sendStatus(404);
+    // Si no se eliminó ningún documento, significa que no se encontró el vendedor
+    if (result.deletedCount === 0) {
+      return res.status(404).send({ error: 'Seller not found' });
+    }
+
+    // Enviar una respuesta de éxito
+    res.status(200).send({ message: `Seller id=${id} deleted successfully` });
+  } catch (error) {
+    // Manejar errores inesperados
+    return res.status(500).send({ error: 'An error occurred while deleting the seller' });
   }
 });
 
