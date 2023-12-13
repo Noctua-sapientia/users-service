@@ -8,7 +8,7 @@ deploy:
     --set usersMongoUrl=${USERS_DB_URL}
 
 dev:
-  contacts-service:
+  users-service:
     command: npm start
     sync:
       - .:/app
