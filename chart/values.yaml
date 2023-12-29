@@ -1,5 +1,0 @@
-contacts: 
-  replicaCount: 1
-
-usersMongoUrl: mongodb+srv://uservice:<password>@cluster0.v9zlcdz.mongodb.net/?retryWrites=true&w=majority
-    
