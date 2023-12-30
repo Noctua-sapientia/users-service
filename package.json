@@ -23,6 +23,7 @@
   "devDependencies": {
     "jest": "^29.7.0",
     "jest-extended": "^4.0.2",
-    "supertest": "^6.3.3"
+    "supertest": "^6.3.3",
+    "ts-node": "^10.9.2"
   }
 }
