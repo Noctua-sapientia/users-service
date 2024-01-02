@@ -88,12 +88,15 @@ router.get('/', async function(req, res, next) {
 
 router.post('/', async function(req, res, next) {
   passport.authenticate('bearer',{session:false})
-  const {name, valoration, orders, reviews} = req.body;
+  const {id, name, valoration, orders, reviews, email, password} = req.body;
   const seller = new Seller({
+    id,
     name,
     valoration,
     orders,
-    reviews
+    reviews,
+    email,
+    password
   });
 
   try{

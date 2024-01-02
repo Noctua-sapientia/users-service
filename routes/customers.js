@@ -45,11 +45,14 @@ router.get('/', async function(req, res, next) {
  */
 router.post('/', async function(req, res, next) {
   passport.authenticate('bearer',{session:false})
-  const {name, surnames, address} = req.body;
+  const {id, name, surnames, address, email, password} = req.body;
   const customer = new Customer({
+    id,
     name,
     surnames,
-    address
+    address,
+    email,
+    password
   });
 
   try{
