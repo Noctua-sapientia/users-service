@@ -3,6 +3,7 @@ const fakeservice = require('../services/fakeservice');
 var router = express.Router();
 var Seller = require('../models/seller');
 var debug = require('debug')('contacts-2:server');
+var passport =require('passport');
 
 /**
  * @swagger
@@ -86,6 +87,7 @@ router.get('/', async function(req, res, next) {
 });
 
 router.post('/', async function(req, res, next) {
+  passport.authenticate('bearer',{session:false})
   const {name, valoration, orders, reviews} = req.body;
   const seller = new Seller({
     name,
