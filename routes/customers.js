@@ -3,6 +3,7 @@ const fakeservice = require('../services/fakeservice');
 var router = express.Router();
 var Customer = require('../models/customer');
 var debug = require('debug')('contacts-2:server');
+var passport =require('passport');
 
 /**
  * @swagger
@@ -43,6 +44,7 @@ router.get('/', async function(req, res, next) {
  *         description: Cliente añadido correctamente
  */
 router.post('/', async function(req, res, next) {
+  passport.authenticate('bearer',{session:false})
   const {name, surnames, address} = req.body;
   const customer = new Customer({
     name,
