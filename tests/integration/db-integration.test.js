@@ -17,7 +17,7 @@ describe('Customers DB connection', () => {
     });
 
     it('writes a customer in the DB', async() => {
-        const customer = new Customer({"id": 1,"name": "Pablo", "surnames": "Santos", "address": "Paradores, 43"});
+        const customer = new Customer({"id": 1,"name": "Pablo", "surnames": "Santos", "address": "Paradores, 43", "email": "psa@gmail.com", "password": "12345L"});
         await customer.save();
 
         customers = await Customer.find();
