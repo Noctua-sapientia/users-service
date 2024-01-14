@@ -30,6 +30,7 @@ const customerSchema = mongoose.Schema({
 
 customerSchema.methods.cleanup = function() {
     return{
+        id: this.id,
         name: this.name,
         surnames: this.surnames,
         address: this.address

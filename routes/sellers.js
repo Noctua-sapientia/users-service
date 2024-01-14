@@ -4,6 +4,8 @@ var router = express.Router();
 var Seller = require('../models/seller');
 var debug = require('debug')('contacts-2:server');
 var passport =require('passport');
+const verificarToken = require('./verificarToken');
+
 
 /**
  * @swagger
@@ -76,7 +78,7 @@ var passport =require('passport');
  *       '404':
  *         description: Vendedor no encontrado
  */
-router.get('/', async function(req, res, next) {
+router.get('/', verificarToken, async function(req, res, next) {
   try{
     const result = await Seller.find();
     res.send(result.map((s) => s.cleanup()));  }catch(e){
@@ -86,7 +88,7 @@ router.get('/', async function(req, res, next) {
 
 });
 
-router.post('/', async function(req, res, next) {
+router.post('/', verificarToken, async function(req, res, next) {
   passport.authenticate('bearer',{session:false})
   const {id, name, valoration, orders, reviews, email, password} = req.body;
   const seller = new Seller({
@@ -113,23 +115,26 @@ router.post('/', async function(req, res, next) {
  }
 });
 
-router.put('/', function(req, res, next) {
-  var newSeller = req.body;
-  var actualSeller = Seller.find(s => {
-    return s.id === newSeller.id;
-  })
+router.put('/', verificarToken, async function(req, res, next) {
+  try {
+    var newSeller = req.body;
+    var actualSeller = await Seller.findOne({ id: newSeller.id });
 
-  if(actualSeller){
-    actualSeller.valoration = newSeller.valoration;
-    actualSeller.orders = newSeller.orders;
-    actualSeller.reviews = newSeller.reviews;
-    res.sendStatus(200);
-  } else {
-    res.sendStatus(404);
+    if (actualSeller) {
+      actualSeller.valoration = newSeller.valoration;
+      actualSeller.orders = newSeller.orders;
+      actualSeller.reviews = newSeller.reviews;
+      await actualSeller.save();
+      res.sendStatus(200);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (error) {
+    next(error); // Pasa el error al siguiente middleware para manejarlo adecuadamente
   }
 });
 
-router.get('/:id', async function(req, res, next) {
+router.get('/:id', verificarToken, async function(req, res, next) {
   var id = req.params.id;
   var result = Seller.find(s => {
     return s.id === parseInt(id);
@@ -142,7 +147,7 @@ router.get('/:id', async function(req, res, next) {
   }
 });
 
-router.delete('/:id', async function(req, res, next) {
+router.delete('/:id', verificarToken, async function(req, res, next) {
   var id = req.params.id;
   
   try {

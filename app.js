@@ -7,6 +7,7 @@ const passport = require('./passport');
 var indexRouter = require('./routes/index');
 var sellersRouter = require('./routes/sellers');
 var customersRouter = require('./routes/customers');
+var loginRouter = require('./routes/login');
 
 
 var app = express();
@@ -21,6 +22,7 @@ app.use(passport.initialize());
 app.use('/', indexRouter);
 app.use('/api/v1/sellers', sellersRouter);
 app.use('/api/v1/customers', customersRouter);
+app.use('/api/v1/login', loginRouter);
 
 
 module.exports = app;

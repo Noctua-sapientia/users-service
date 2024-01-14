@@ -34,6 +34,7 @@ const sellerSchema = mongoose.Schema({
 
 sellerSchema.methods.cleanup = function() {
     return{
+        id: this.id,
         name: this.name,
         valoration: this.valoration,
         orders: this.orders,
