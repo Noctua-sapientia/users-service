@@ -7,6 +7,11 @@ var passport =require('passport');
 const verificarToken = require('./verificarToken');
 const jwt = require('jsonwebtoken');
 const SECRET_KEY = 'tu_clave_secreta_para_jwt';
+const cors = require('cors');
+
+
+
+router.use(cors());
 
 /**
  * @swagger
@@ -123,12 +128,14 @@ router.put('/', verificarToken, async function(req, res, next) {
  */
 router.get('/:id', verificarToken, async function(req, res, next) {
   var id = req.params.id;
-  var result = customers.find(s => {
-    return s.id === parseInt(id);
-  });
+  var result = await Customer.findOne({ id: id });
 
   if(result){
-    res.send(result);
+    // Configurar los encabezados CORS
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3001');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.send(result.cleanup());
   } else {
     res.sendStatus(404);
   }
