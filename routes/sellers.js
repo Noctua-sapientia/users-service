@@ -5,7 +5,11 @@ var Seller = require('../models/seller');
 var debug = require('debug')('contacts-2:server');
 var passport =require('passport');
 const verificarToken = require('./verificarToken');
+const cors = require('cors');
 
+
+
+router.use(cors());
 
 /**
  * @swagger
@@ -136,12 +140,11 @@ router.put('/', verificarToken, async function(req, res, next) {
 
 router.get('/:id', verificarToken, async function(req, res, next) {
   var id = req.params.id;
-  var result = Seller.find(s => {
-    return s.id === parseInt(id);
-  });
+  var result = Seller.findOne({ id: id });
+
 
   if(result){
-    res.send(result);
+    res.send(result.cleanup());
   } else {
     res.sendStatus(404);
   }

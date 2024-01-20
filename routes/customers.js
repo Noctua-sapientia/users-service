@@ -1,12 +1,9 @@
 var express = require('express');
-const fakeservice = require('../services/fakeservice');
 var router = express.Router();
 var Customer = require('../models/customer');
 var debug = require('debug')('contacts-2:server');
 var passport =require('passport');
 const verificarToken = require('./verificarToken');
-const jwt = require('jsonwebtoken');
-const SECRET_KEY = 'tu_clave_secreta_para_jwt';
 const cors = require('cors');
 
 
@@ -131,10 +128,6 @@ router.get('/:id', verificarToken, async function(req, res, next) {
   var result = await Customer.findOne({ id: id });
 
   if(result){
-    // Configurar los encabezados CORS
-    res.header('Access-Control-Allow-Origin', 'http://localhost:3001');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     res.send(result.cleanup());
   } else {
     res.sendStatus(404);
