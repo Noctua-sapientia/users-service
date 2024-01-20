@@ -4,9 +4,8 @@ const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 var Customer = require('../models/customer');
 var Seller = require('../models/seller');
-const bcrypt = require('bcrypt');
-const crypto = require('crypto');
 const cors = require('cors');
+
 // Genera una clave secreta de 256 bits
 const SECRET_KEY = 'a56d1f7c0c817387a072692731ea60df7c3a6c19d82ddac228a9a4461f8c5a72';
 
@@ -52,12 +51,6 @@ router.post('/', async (req, res) => {
 
     if (email === user.email && password === user.password) {
       const token = jwt.sign({ userId: user.id, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
-
-      // Configurar los encabezados CORS
-      res.header('Access-Control-Allow-Origin', 'http://localhost:3001');
-      res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-      res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-
       res.json({ token, userId, userType });
     } else {
       res.status(401).json({ error: 'Credenciales inválidas' });
