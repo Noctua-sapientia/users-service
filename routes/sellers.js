@@ -1,9 +1,9 @@
 var express = require('express');
-const fakeservice = require('../services/fakeservice');
 var router = express.Router();
 var Seller = require('../models/seller');
 var debug = require('debug')('contacts-2:server');
 var passport =require('passport');
+var emailSender = require('../services/sendemailservice');
 const verificarToken = require('./verificarToken');
 const cors = require('cors');
 
@@ -107,6 +107,7 @@ router.post('/', verificarToken, async function(req, res, next) {
 
   try{
     await seller.save();
+    await emailSender.sendEmail(name, email);
     res.sendStatus(201);
   }catch(e){
     if(e.errors) {
@@ -114,7 +115,7 @@ router.post('/', verificarToken, async function(req, res, next) {
       res.status(400).send({error: e.message});
     }else{
       debug("DB Problem", e);
-      res.sendStatus(500);
+      res.status(500).send({error: e.message});
     }
  }
 });

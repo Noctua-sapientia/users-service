@@ -69,7 +69,7 @@ router.post('/', verificarToken, async function(req, res, next) {
       res.status(400).send({error: e.message});
     }else{
       debug("DB Problem", e);
-      res.sendStatus(500);
+      res.status(500).send({error: e.message});
     }
   }
 });
