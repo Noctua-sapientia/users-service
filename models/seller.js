@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const sellerSchema = mongoose.Schema({
-    id : {
-        type: Number,
-        required: true    
-    },
     name : {
         type: String,
         required: true
@@ -28,8 +24,32 @@ const sellerSchema = mongoose.Schema({
     password : {
         type: String,
         required: true
+    },
+    id: {
+        type: Number,
+        unique: true,
+        default: 10
     }
 
+});
+
+sellerSchema.pre('save', function (next) {
+    const doc = this;
+    if (!doc.isNew) {
+        return next();
+    }
+
+    Seller.find({}, 'id')
+    .sort({ id: -1 })
+    .limit(1)
+    .then((sellers) => {
+        const maxId = sellers.length > 0 ? sellers[0].id : 9;
+        doc.id = maxId + 1;
+        next();
+    })
+    .catch((error) => {
+        next(error);
+    });
 });
 
 sellerSchema.methods.cleanup = function() {
