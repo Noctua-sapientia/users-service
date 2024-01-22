@@ -1,0 +1,275 @@
+lantilla - SLA 
+Información general 
+Departamento: ___________________________________________
+Cliente / usuarios: _______________________________________ 
+Acuerdo (Service Level Agreement) número: _________________ 
+Acuerdo número: ____________________ 
+SLA - Desde: __________ hasta: _____________ Duración: 
+Representante del Cliente / usuario (nombre): 
+Teléfono de contacto:_______________________
+Fax de contacto:_________________________
+Correo electrónico:_________________________
+Dirección de contacto:______________________
+ _____________________ 
+_______________________________________
+Otros representantes: 
+Teléfono de contacto: _______________________
+Fax de contacto: _________________________
+Correo electrónico:_________________________
+Dirección de contacto:______________________
+ _____________________ 
+_______________________________________
+Contacto del servicio (HD): ______________________________
+Otro representante: ______________________________ 
+Teléfono de contacto: _______________________
+Fax de contacto:_________________________
+Correo electrónico:_________________________
+Dirección de contacto:______________________
+ _____________________ 
+_______________________________________
+Reporting 
+Describir los servicios facilitados por el helpdesk:
+problemas – situaciones que causan, total o parcialmente falta de operatividad 
+en los recursos de IT. Esto debería incluir fallos en software, hardware y 
+telecomunicaciones.
+preguntas – asistencias para completar tareas, por ejemplo, una llamada sobre 
+como realizar ‘cortar y pegar’ en alguna aplicación. La mayoría de estas 
+deberán se considerarán entrenamiento on-line.
+peticiones – se refiere a solicitud de actualizaciones, mejoras o nuevos 
+recursos de tecnología.
+Si se da alguno de estos casos los clientes / usuarios deberán contactar con el helpdesk lo 
+antes posible. El helpdesk deberá anotar todos o algunos de los siguientes datos dependiendo 
+de la naturaleza del suceso: 
+• localización del cliente 
+• nombre 
+• número de teléfono 
+• fecha de la llamada 
+• fecha en la que se dio el suceso 
+• número de referencia 
+• tiempo de llamada 
+• tiempo dedicado al análisis del problema 
+• mensajes de error 
+• fabricante del hardware 
+• número de serie 
+• modelo 
+• código de referencia del problema 
+• identificador de la unidad de hardware 
+• breve descripción del problema 
+• característica afectada del programa 
+• nombre del producto 
+• versión del producto 
+El cliente deberá tener la mayor parte de esta información disponible cuando esté informando 
+al operador. Si no la tiene disponible esta deberá ser localizada por el operador lo que puede 
+suponer una mayor duración de la llamada.
+Seguimiento de los problemas 
+El helpdesk realizará seguimiento de los distintos sucesos mientras no estén solucionados. Las 
+llamadas se atenderán en estricto orden de llegada. El detalle de cada suceso será anotado 
+por el operador en el sistema. Se podrá obtener listados de llamadas por cada operador del 
+servicio o por otros niveles implicados. 
+Horario del servicio 
+El servicio estará disponible ___________ días a la semana comenzando el ______________ 
+(primer día de cobertura del servicio) hasta _________________________ (el último día de 
+cobertura de la semana). La primera hora de cobertura será ________________ hasta 
+_______. El segundo nivel se establece desde ______________ hasta ________________. 
+Fuera de estos horarios se dispondrá de las siguientes alternativas: 
+- dejar un mensaje en un contestador 
+- enviar el suceso mediante algún sistema integrado con la herramienta utilizada en el 
+servicio 
+- anotar el suceso mediante alguna funcionalidad de acceso remoto 
+- enviar un fax 
+- enviar una página a un operador asignado 
+- enviar un correo electrónico 
+La persona o personas de contacto indicadas en este acuerdo deberán comunicar con una 
+antelación de _________ (horas) la necesidad de extender los horarios de cobertura del 
+servicio para el mismo día y con una antelación de __________ (días, meses,...) para 
+ampliaciones de cobertura con un carácter más estable o según una planificación determinada. 
+Nivel de resolución 
+El helpdesk resolverá el __ % de los problemas en el primer nivel, el __ % en el segundo nivel 
+y el __ % en el tercer nivel. Las definiciones para cada unos de los niveles son: 
+Soluciones de primer nivel: 
+- soluciones aportadas en la misma llamada y en la que el operador no tiene necesidad 
+de contactar con otro grupo de soporte o con alguien externo al servicio para obtener 
+asesoramiento, información o cualquier tipo de apoyo 
+- solución mediante una asistencia directa al cliente que fue solcitada por medios 
+electrónicos por los operadores del servicio. 
+Soluciones de segundo nivel 
+- problema escalado desde el helpdesk a otro recurso el cual consigue solucionarlo 
+- problemas resueltos en la primera llamada pero en los que el operador a solicitado al 
+cliente que espere mientras contacta con otro recurso externo al servicio para 
+conseguir la solución 
+- soluciones obtenidas después de finalizar la primera llamada 
+Soluciones de tercer nivel 
+- problema escalado desde el helpdesk hacia otra fuente de solución 
+Tiempo de respuesta 
+El helpdesk responderá el __ % de las llamadas en __ minutos durante el primer periodo y 
+responderá el __ % de llamadas en __ durante el segundo periodo.
+Nivel de abandono de llamadas 
+El máximo número de llamadas abandonadas después de una espera de __ segundos, será 
+del __ %. 
+Duración de la llamada 
+El objetivo de duración del helpdesk es de __ segundos para el __ % de las llamadas. El 
+helpdesk revisará continuamente la duración de las llamadas e implantará procedimientos, 
+procesos o tecnología que facilite su reducción. 
+Interrupción de la llamada 
+Es posible que durante el procesamiento de un problema sea necesario finalizar la llamada por 
+parte del operador para realizar un análisis más en detalle o para realizar una consulta a otro 
+servicio distinto. En este caso se ofrecerá al cliente / usuario la posibilidad de permanecer en 
+espera o acordar con él que se le devolverá la llamada. Estos casos se considerarán como
+problemas no resueltos por el primer nivel. 
+Gestión de llamadas 
+El personal del helpdesk tendrá un trato político y cortés durante cada llamada y seguirá los 
+procedimientos disponibles para hacer que el cliente / usuario se sienta lo más cómodo posible 
+además de asegurar la completa y rápida solución de los problemas. Si se da el caso de que 
+un cliente / usuario mantiene un trato no educado el asunto será escalado inmediatamente a 
+______________________ o ___________________________. El helpdesk realizará llamadas 
+de forma aleatoria con la intención de formar a los clientes / usuarios. Si el cliente / usuario 
+considera que el operador no le ha atendido correctamente podrá dirigirse a 
+_________________ o _________________________. 
+Cierre de problemas 
+Un problema solo se considerará resuelto cuando el cliente / usuarios esté satisfecho con la 
+solución y de acuerdo con el cierre. Al finalizar cada problema, el operador anotará un resumen 
+y explicará la solución. También se asegurará que toda la información requerida está 
+registrada. Cualquier observación o modificación sobre el procedimiento de cierre del problema 
+se acordará por las personas señaladas en el inicio del acuerdo. 
+Rellamadas o feedback al cliente / usuario 
+• Definir criterios de tiempo para ambos casos 
+Responsabilidad del problema 
+El operador que registra la primera llamada. 
+Esta asignación la hace automáticamente la herramienta de gestión del helpdesk 
+El cliente / usuario siempre conocerá el nombre de esta persona y podrá contactar con él.
+Los analistas de Service Desk serán los responsables del seguimiento del estado de todos los 
+casos abiertos asegurando su actualización en la herramienta de gestión. La persona que 
+registró la llamada quedará automáticamente identificada como propietario de la misma para el 
+cliente y por lo tanto será su interlocutor en lo relativo a los cambios de estado que puedan 
+ocurrir. El cliente podrá solicitar, en cualquier momento, a Service Desk la reasignación del 
+caso a otro analista. Si el cliente no recibe información a tiempo, podrá llamar a Service Desk 
+solicitando es estado de su caso en cualquier momento. El analista de Service Desk requerirá 
+el número al cliente para una mayor rapidez de respuesta. En los casos que necesiten de 
+procedimientos especiales el cliente será informado puntualmente. 
+Asignar prioridades 
+Definir criterios: 
+el cliente puede rechazarla 
+el analista dispone de datos de impacto en el negocio 
+el analista conoce datos críticos del negocio 
+el analista dispone de otros casos resueltos 
+... 
+la prioridad puede cambiarla el cliente / usuario accediendo directamente al problema 
+registrado 
+la prioridad se fija por el impacto en el negocio 
+la prioridad la determina el que aportará la solución 
+... 
+No se deben crear muchas prioridades. El número ideal es de tres. 
+Cada prioridad debe disponer de una guía de criterios para su aplicación. 
+Prioridad uno (objetivo de resolución __ horas): 
+afecta a una parte importante de la tecnología de red 
+reduce los márgenes de beneficio de la empresa 
+hay un fallo en el servidor 
+afecta a un número significativo de personal de la empresa 
+se ha parado el sistema de cobros 
+... 
+Prioridad dos (objetivo de resolución __ horas): 
+Afecta a procesos importantes del negocio 
+Afecta al rendimiento 
+Requiere soporte externo 
+Cuando una persona no puede utilizar SU equipo 
+Un cliente solicita instrucciones operacionales 
+Una empresa ve reducida su capacidad de producción 
+Prioridad tres (objetivo de resolución __ horas): 
+ Solicitudes de materiales 
+ Casos sin impacto en el negocio 
+ Solicitudes de actualización 
+ Solicitudes de información 
+ Impacto no significativo en el cliente 
+Gestión de escalado 
+Service Desk será el responsable de controlar y gestionar las llamadas escaladas a otros 
+recursos. Su objetivo es escalar el __ % de las llamadas para corregir los problemas en el 
+primer contacto. No informará al cliente de los escalados a menos que el cliente lo solicite. 
+Análisis de síntomas de un problema 
+Cuando se analiza un caso, es importante que el cliente entienda que el analista de Service 
+Desk espera su colaboración, aportando información y realizando algunas acciones o tareas 
+guiadas por el analista. Algunos clientes se niegan a ayudar al analista y deben entender que 
+su caso puede tardar más tiempo en resolverse. 
+Informes del servicio 
+El service desk facilitará a los departamentos de relaciones con clientes un correo diario con el 
+análisis completo de todos los casos registrados en la herramienta de gestión en relación con 
+este acuerdo. 
+Aceptación 
+Solo es aplicable cuando el servicio se presta en función de asociación, contratación 
+específica,... donde el cliente / usuario debe disponer de algún dato de referencia o clave. 
+Cuando el cliente realiza una llamada telefónica el analista de Service Desk le facilitará una 
+referencia de la llamada al finalizar la comunicación. En ese momento el caso habrá sido 
+oficialmente aceptado por Service Desk. El cliente deberá guardar el número de referencia y 
+utilizarlo si son necesarios contactos posteriores. 
+Si el caso se ha comunicado por medios electrónicos el número de referencia se enviará de 
+forma electrónica o un analista de Service Desk contactará con el cliente en ___ minutos. 
+Opcionales 
+Visitas programadas para clientes / usuarios al helpdesk 
+Service Desk está disponible desde (primer día de la semana con cobertura) hasta (último día 
+de la semana con cobertura) desde las ___ horas hasta las ___ horas para visitas personales a 
+los clientes. 
+Aplican las limitaciones siguientes: 
+Días y horas indicadas en el acuerdo 
+Imposibilidad de acceso libre a las instalaciones del cliente 
+Barreras físicas o áreas restringidas en la ubicación del cliente 
+Ocupación de las líneas 
+Las personas responsables del acuerdo deberán vigilar que el número de líneas sea suficiente 
+para evitar que el estén ‘comunicando’. 
+Service Desk obtendrá periódicamente informes de la centralita para determinar las 
+necesidades de mejora de capacidad de los accesos de los clientes. 
+Sistema dinámico de notificaciones 
+Service Desk contará con las herramientas adecuadas para monitorizar las paradas y 
+problemas que puedan ocurrir. En caso de que no identifiquen adecuadamente estas 
+situaciones se abrirá un evento de notificación automática a los clientes. 
+Solución dinámica de problemas 
+Mismo criterio que el punto anterior. 
+Envío remoto de sucesos 
+• fax 
+• internet 
+• intranet 
+• … 
+Estos casos se revisarán cada ____ minutos por Service Desk y se procesarán de acuerdo a 
+reglas descritas en el acuerdo. Los detalles completos del caso deben ser aportados por el 
+cliente. En caso de no indicarse estos detalles se producirán retrasos o el cliente recibirá una 
+notificación para que aporte los datos que solicite el analista. 
+Acceso remoto a la gestión de problemas 
+El cliente dispondrá de herramientas que le permitirán realizar un seguimiento del estado de los 
+casos reportados a Service Desk, tanto en curso como cerrados. 
+Satisfacción del cliente 
+Para mantener el nivel adecuado de calidad, Service Desk realizará periódicamente encuestas 
+a los clientes. Estas encuestas serán al azar y vía correo electrónico. Se pretende comprobar 
+que Service Desk está cumpliendo con sus obligaciones y con los acuerdos con el cliente. El 
+cliente debe considerar una obligación responder a estos cuestionarios y será informado de los 
+resultados mediante (boletín, revista,…). 
+Gestión de reclamaciones 
+Todo cliente que desee presentar una queja deberá llamar en horario de trabajo a Service Desk
+o a (jefe de servicio – número) o a (número específico de reclamaciones). 
+Asignación de prioridades automática 
+Si la herramienta de Service Desk lo permite se utilizará la asignación de prioridad de forma 
+automática. La matriz de prioridades se habrá definido conjuntamente entre el cliente y Service 
+Desk. En las llamadas de prioridad uno se realizará una respuesta automática de asignación. 
+Ante cualquier conflicto con estas asignaciones automáticas el cliente deberá contactar con 
+(responsable de servicio – número). 
+Escalado automático de casos 
+Si un caso se abre de forma dinámica desde la herramienta de Service Desk y se asigna a un 
+nivel superior de forma automática, Service Desk debe mantener el control sobre el caso. El 
+objetivo de este tipo de escalados será de __ % de los casos con la intención de conseguir que 
+un determinado grupo de soporte resuelva en la primera llamada. 
+Autoservicio para el cliente 
+Para mejorar la productividad y fortalecer a los clientes Service Desk aporta una serie de 
+productos de auto ayuda que permite que los clientes puedan resolver muchos de los casos 
+por si mismos. Para conseguir una lista de estos productos se debe contactar con Service 
+Desk. 
+Gestión de proveedores 
+Service Desk se responsabiliza de organizar los servicios de soporte externos que visitan a los 
+clientes en sus respectivas ubicaciones para reparar fallos en la tecnología que utilizan. Service 
+Desk facilitará a estos proveedores los datos necesarios para que se realice la visita así como 
+el número con el que tanto el cliente como el propio Service Desk identificarán la intervención.
+Service Desk será responsable de alcanzar los mejores acuerdos con estos proveedores para 
+que los tiempos de atención y solución se puedan encuadrar en el marco de este acuerdo. 
+El cliente deberá tomar las precauciones necesarias para evitar la suplantación de estos 
+proveedores en el acceso a sus instalaciones, solicitando identificación a la personas y el
+número de caso registrado en Service Desk que deberá coincidir con el que él mismo abrió. 
+El cliente deberá comprobar que el fallo ha sido corregido antes de que la persona que asiste a 
+la reparación se haya marchado y comunicar cualquier incidencia a Service Desk. 
+Service Desk se responsabilizará de confirmar el cierre del caso y anotará la información 
+necesaria en la herramienta antes de cambiar el estado. 
