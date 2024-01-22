@@ -48,7 +48,7 @@ router.get('/', verificarToken, async function(req, res, next) {
  *       '201':
  *         description: Cliente añadido correctamente
  */
-router.post('/', verificarToken, async function(req, res, next) {
+router.post('/', async function(req, res, next) {
   passport.authenticate('bearer',{session:false})
   const {id, name, surnames, address, email, password} = req.body;
   const customer = new Customer({

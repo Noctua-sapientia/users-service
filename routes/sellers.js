@@ -92,7 +92,7 @@ router.get('/', verificarToken, async function(req, res, next) {
 
 });
 
-router.post('/', verificarToken, async function(req, res, next) {
+router.post('/', async function(req, res, next) {
   passport.authenticate('bearer',{session:false})
   const {id, name, valoration, orders, reviews, email, password} = req.body;
   const seller = new Seller({
