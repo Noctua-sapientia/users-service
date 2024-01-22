@@ -1,5 +1,5 @@
 const Customer = require('../../models/customer');
-const dbConnect = require('../../db');
+const dbConnect = require('../../dbTest');
 
 jest.setTimeout(30000);
 

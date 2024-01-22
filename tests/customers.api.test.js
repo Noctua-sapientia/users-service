@@ -1,11 +1,17 @@
 const app = require('../app');
 const request = require('supertest');
+const jwt = require('jsonwebtoken');
 const Customer = require('../models/customer');
 
 describe("Customers API", () => {
+    let jwtToken;
+    beforeAll(() => {
+        const SECRET_KEY = 'a56d1f7c0c817387a072692731ea60df7c3a6c19d82ddac228a9a4461f8c5a72';
+        jwtToken = jwt.sign({}, SECRET_KEY,);
+    });
     describe("GET /", () => {
         it("Sould return an HTML document", () => {
-            return request(app).get("/").then((response) => {
+            return request(app).get("/").set('Authorization', jwtToken).then((response) => {
                 expect(response.status).toBe(200);
                 expect(response.type).toEqual(expect.stringContaining("html"));
                 expect(response.text).toEqual(expect.stringContaining("h1"));
@@ -24,7 +30,7 @@ describe("Customers API", () => {
             dbFind = jest.spyOn(Customer, "find");
             dbFind.mockImplementation(async () => Promise.resolve(customers));
 
-            return request(app).get("/api/v1/customers").then((response) => {
+            return request(app).get("/api/v1/customers").set('Authorization', jwtToken).then((response) => {
                 expect(response.status).toBe(200);
                 expect(response.body).toBeArrayOfSize(2);
                 expect(dbFind).toBeCalled();
