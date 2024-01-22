@@ -1,8 +1,14 @@
 var express = require('express');
-const fakeservice = require('../services/fakeservice');
 var router = express.Router();
 var Customer = require('../models/customer');
 var debug = require('debug')('contacts-2:server');
+var passport =require('passport');
+const verificarToken = require('./verificarToken');
+const cors = require('cors');
+
+
+
+router.use(cors());
 
 /**
  * @swagger
@@ -17,7 +23,7 @@ var debug = require('debug')('contacts-2:server');
  *           application/json:
  *             example: [{ "id": 1, "name": "Pablo", "surnames": "Santos Alises", "address": "C/América, 4" }]
  */
-router.get('/', async function(req, res, next) {
+router.get('/', verificarToken, async function(req, res, next) {
   try{
     const result = await Customer.find();
     res.send(result.map((c) => c.cleanup()));
@@ -43,11 +49,15 @@ router.get('/', async function(req, res, next) {
  *         description: Cliente añadido correctamente
  */
 router.post('/', async function(req, res, next) {
-  const {name, surnames, address} = req.body;
+  passport.authenticate('bearer',{session:false})
+  const {id, name, surnames, address, email, password} = req.body;
   const customer = new Customer({
+    id,
     name,
     surnames,
-    address
+    address,
+    email,
+    password
   });
 
   try{
@@ -59,7 +69,7 @@ router.post('/', async function(req, res, next) {
       res.status(400).send({error: e.message});
     }else{
       debug("DB Problem", e);
-      res.sendStatus(500);
+      res.status(500).send({error: e.message});
     }
   }
 });
@@ -76,17 +86,20 @@ router.post('/', async function(req, res, next) {
  *         application/json:
  *           example: { "id": 1, "address": "Nueva dirección" }
  */
-router.put('/', function(req, res, next) {
-  var newCustomer = req.body;
-  var actualCustomer = Customer.find(s => {
-    return s.id === newCustomer.id;
-  })
+router.put('/', verificarToken, async function(req, res, next) {
+  try {
+    var newCustomer = req.body;
+    var actualCustomer = await Customer.findOne({ id: newCustomer.id });
 
-  if(actualCustomer){
-    actualCustomer.address = newCustomer.address;
-    res.sendStatus(200);
-  } else {
-    res.sendStatus(404);
+    if (actualCustomer) {
+      actualCustomer.address = newCustomer.address;
+      await actualCustomer.save();
+      res.sendStatus(200);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (error) {
+    next(error); // Pasa el error al siguiente middleware para manejarlo adecuadamente
   }
 });
 
@@ -110,14 +123,12 @@ router.put('/', function(req, res, next) {
  *       '404':
  *         description: Cliente no encontrado
  */
-router.get('/:id', async function(req, res, next) {
+router.get('/:id', verificarToken, async function(req, res, next) {
   var id = req.params.id;
-  var result = customers.find(s => {
-    return s.id === parseInt(id);
-  });
+  var result = await Customer.findOne({ id: id });
 
   if(result){
-    res.send(result);
+    res.send(result.cleanup());
   } else {
     res.sendStatus(404);
   }
@@ -140,9 +151,7 @@ router.get('/:id', async function(req, res, next) {
  *       '404':
  *         description: Cliente no encontrado
  */
-router.delete('/:id', async function(req, res, next) {
-  var id = req.params.id;
-  
+router.delete('/:id', verificarToken, async function(req, res, next) {
   var id = req.params.id;
   
   try {

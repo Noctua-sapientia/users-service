@@ -1,8 +1,15 @@
 var express = require('express');
-const fakeservice = require('../services/fakeservice');
 var router = express.Router();
 var Seller = require('../models/seller');
 var debug = require('debug')('contacts-2:server');
+var passport =require('passport');
+var emailSender = require('../services/sendemailservice');
+const verificarToken = require('./verificarToken');
+const cors = require('cors');
+
+
+
+router.use(cors());
 
 /**
  * @swagger
@@ -75,7 +82,7 @@ var debug = require('debug')('contacts-2:server');
  *       '404':
  *         description: Vendedor no encontrado
  */
-router.get('/', async function(req, res, next) {
+router.get('/', verificarToken, async function(req, res, next) {
   try{
     const result = await Seller.find();
     res.send(result.map((s) => s.cleanup()));  }catch(e){
@@ -86,16 +93,21 @@ router.get('/', async function(req, res, next) {
 });
 
 router.post('/', async function(req, res, next) {
-  const {name, valoration, orders, reviews} = req.body;
+  passport.authenticate('bearer',{session:false})
+  const {id, name, valoration, orders, reviews, email, password} = req.body;
   const seller = new Seller({
+    id,
     name,
     valoration,
     orders,
-    reviews
+    reviews,
+    email,
+    password
   });
 
   try{
     await seller.save();
+    await emailSender.sendEmail(name, email);
     res.sendStatus(201);
   }catch(e){
     if(e.errors) {
@@ -103,41 +115,43 @@ router.post('/', async function(req, res, next) {
       res.status(400).send({error: e.message});
     }else{
       debug("DB Problem", e);
-      res.sendStatus(500);
+      res.status(500).send({error: e.message});
     }
  }
 });
 
-router.put('/', function(req, res, next) {
-  var newSeller = req.body;
-  var actualSeller = Seller.find(s => {
-    return s.id === newSeller.id;
-  })
+router.put('/', verificarToken, async function(req, res, next) {
+  try {
+    var newSeller = req.body;
+    var actualSeller = await Seller.findOne({ id: newSeller.id });
 
-  if(actualSeller){
-    actualSeller.valoration = newSeller.valoration;
-    actualSeller.orders = newSeller.orders;
-    actualSeller.reviews = newSeller.reviews;
-    res.sendStatus(200);
-  } else {
-    res.sendStatus(404);
+    if (actualSeller) {
+      actualSeller.valoration = newSeller.valoration;
+      actualSeller.orders = newSeller.orders;
+      actualSeller.reviews = newSeller.reviews;
+      await actualSeller.save();
+      res.sendStatus(200);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (error) {
+    next(error); // Pasa el error al siguiente middleware para manejarlo adecuadamente
   }
 });
 
-router.get('/:id', async function(req, res, next) {
+router.get('/:id', verificarToken, async function(req, res, next) {
   var id = req.params.id;
-  var result = Seller.find(s => {
-    return s.id === parseInt(id);
-  });
+  var result = await Seller.findOne({ id: id });
+
 
   if(result){
-    res.send(result);
+    res.send(result.cleanup());
   } else {
     res.sendStatus(404);
   }
 });
 
-router.delete('/:id', async function(req, res, next) {
+router.delete('/:id', verificarToken, async function(req, res, next) {
   var id = req.params.id;
   
   try {
