@@ -141,7 +141,7 @@ router.put('/', verificarToken, async function(req, res, next) {
 
 router.get('/:id', verificarToken, async function(req, res, next) {
   var id = req.params.id;
-  var result = Seller.findOne({ id: id });
+  var result = await Seller.findOne({ id: id });
 
 
   if(result){
