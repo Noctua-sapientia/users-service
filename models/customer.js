@@ -52,7 +52,8 @@ customerSchema.methods.cleanup = function () {
         id: this.id,
         name: this.name,
         surnames: this.surnames,
-        address: this.address
+        address: this.address,
+        email: this.email
     };
 };
 
