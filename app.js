@@ -35,7 +35,7 @@ var options = {
             {name: 'Users', description: 'Operations related to users.'}
         ],
     },
-    apis: ['./routes/sellers.js', './routes/customers.js'],
+    apis: ['./routes/sellers.js', './routes/customers.js', './routes/login.js'],
 };
 var swaggerSpec = swaggerJsDoc(options);
 

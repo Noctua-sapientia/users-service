@@ -14,18 +14,21 @@ router.use(bodyParser.json());
 router.use(cors());
 /**
  * @swagger
- * /customers:
+ * /api/v1/login:
  *   post:
- *     summary: Añadir nuevo cliente
- *     description: Añade un nuevo cliente a la lista
+ *     summary: Iniciar sesión en la aplicación
+ *     description: Devuelve un token JWT de acceso a la aplicación
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
- *           example: { "id": 2, "name": "Nuevo", "surnames": "Cliente", "address": "C/Nueva, 123" }
+ *           example: { "email": "pablo@gmail.com", "password": "password"}
  *     responses:
- *       '201':
- *         description: Cliente añadido correctamente
+ *       '200':
+ *         description: Sesión iniciada
+ *         content:
+ *           application/json:
+ *             example: '{ "userId": 1, "userType": "Seller", "token": "eyJradñsfsdjhasd2342lasdh3424" }'
  */
 router.post('/', async (req, res) => {
   try {
