@@ -28,6 +28,8 @@
     "nodemailer": "^6.9.8",
     "passport": "^0.7.0",
     "passport-http-bearer": "^1.0.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
     "url-join": "^4.0.1",
     "uuid": "^9.0.1"
   },

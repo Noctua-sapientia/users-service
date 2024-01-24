@@ -58,7 +58,8 @@ sellerSchema.methods.cleanup = function() {
         name: this.name,
         valoration: this.valoration,
         orders: this.orders,
-        reviews: this.reviews
+        reviews: this.reviews,
+        email: this.email
     }
 }
 

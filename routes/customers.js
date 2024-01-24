@@ -4,8 +4,8 @@ var Customer = require('../models/customer');
 var debug = require('debug')('contacts-2:server');
 var passport =require('passport');
 const verificarToken = require('./verificarToken');
+const Order = require('../services/ordersService');
 const cors = require('cors');
-
 
 
 router.use(cors());
@@ -35,7 +35,7 @@ router.get('/', verificarToken, async function(req, res, next) {
 
 /**
  * @swagger
- * /customers:
+ * /api/v1/customers:
  *   post:
  *     summary: Añadir nuevo cliente
  *     description: Añade un nuevo cliente a la lista
@@ -76,7 +76,7 @@ router.post('/', async function(req, res, next) {
 
 /**
  * @swagger
- * /customers:
+ * /api/v1/customers:
  *   put:
  *     summary: Actualizar dirección del cliente
  *     description: Actualiza la dirección de un cliente existente.
@@ -88,12 +88,14 @@ router.post('/', async function(req, res, next) {
  */
 router.put('/', verificarToken, async function(req, res, next) {
   try {
+    const accessToken = req.headers.authorization;
     var newCustomer = req.body;
     var actualCustomer = await Customer.findOne({ id: newCustomer.id });
 
     if (actualCustomer) {
       actualCustomer.address = newCustomer.address;
       await actualCustomer.save();
+      await Order.updateOrdersAddress(accessToken, actualCustomer.id, actualCustomer.address);
       res.sendStatus(200);
     } else {
       res.sendStatus(404);
@@ -105,7 +107,7 @@ router.put('/', verificarToken, async function(req, res, next) {
 
 /**
  * @swagger
- * /customers/{id}:
+ * /api/v1/customers/{id}:
  *   get:
  *     summary: Obtener cliente por ID
  *     description: Obtiene un cliente específico por su ID.
@@ -136,7 +138,7 @@ router.get('/:id', verificarToken, async function(req, res, next) {
 
 /**
  * @swagger
- * /customers/{id}:
+ * /api/v1/customers/{id}:
  *   delete:
  *     summary: Eliminar cliente por ID
  *     description: Elimina un cliente específico por su ID.

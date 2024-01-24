@@ -13,7 +13,7 @@ router.use(cors());
 
 /**
  * @swagger
- * /sellers:
+ * /api/v1/sellers:
  *   get:
  *     summary: Obtener lista de vendedores
  *     description: Obtiene la lista de todos los vendedores.
@@ -47,7 +47,7 @@ router.use(cors());
  *         description: Información del vendedor actualizada correctamente
  *       '404':
  *         description: Vendedor no encontrado
- * /sellers/{id}:
+ * /api/v1/sellers/{id}:
  *   get:
  *     summary: Obtener vendedor por ID
  *     description: Obtiene un vendedor específico por su ID.
@@ -81,7 +81,21 @@ router.use(cors());
  *         description: Vendedor eliminado correctamente
  *       '404':
  *         description: Vendedor no encontrado
- */
+ * /api/v1/:sellerId/increaseOrders:
+ *  put:
+ *     summary: Incrementar número de pedidos de un vendedor
+ *     description: Incrementa el número de pedidos de un vendedor exixtente.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           example: '{ "units": 2}'
+ *     responses:
+ *       '200':
+ *         description: Orders updated successfully
+ *       '404':
+ *         description: Seller not found
+ */ 
 router.get('/', verificarToken, async function(req, res, next) {
   try{
     const result = await Seller.find();
@@ -168,6 +182,32 @@ router.delete('/:id', verificarToken, async function(req, res, next) {
   } catch (error) {
     // Manejar errores inesperados
     return res.status(500).send({ error: 'An error occurred while deleting the seller' });
+  }
+});
+
+// Definición del método PUT para actualizar el número de órdenes de un vendedor
+router.put('/:sellerId/increaseOrders', verificarToken, async function(req, res, next) {
+  const sellerId = parseInt(req.params.sellerId);
+  const newOrdersCount = req.body.units;
+
+  try {
+    // Encuentra al vendedor con el ID dado
+    const seller = await Seller.findOne({ id: sellerId });
+    if (!seller) {
+      return res.status(404).send("Seller with not found.");
+    }
+
+    // Actualiza el número de órdenes
+    seller.orders += newOrdersCount;
+
+    console.log(seller.orders)
+
+    // Guarda los cambios en la base de datos
+    await seller.save();
+    res.status(200).send("Orders updated successfully");
+  } catch (error) {
+    console.error("Database error", error);
+    return res.status(500).send({ error: "Database error" });
   }
 });
 
